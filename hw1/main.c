@@ -5,15 +5,7 @@ DUe: 01/17/19
 
 */
 
-/** Constants
-	
-	-Circular buffer size.
-
-*/
-
-/** Headers
-
-*/
+/** Headers */
 
 #include "hw1.h"
 
@@ -27,8 +19,8 @@ DUe: 01/17/19
 int main(){
 	while(1){ // ad infinitum 
 	
-		//prompt - Display the current count of input lines, receive a text input, use the constant to pass to parse. 
-		//parse - Parse the input line, respond to the command. 
+
+		
 
 	}
 }

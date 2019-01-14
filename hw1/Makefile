@@ -4,25 +4,28 @@
 #Due Date: 01/17/19 
 
 C = gcc
-HW1OBJS = main.o max.o 1dalloc.o
-HW1HDRS = hw3. verbose.h
+obs = main.o prompt.o inputhdlr.o circularbuffer.o
+hdrs = hw1.h prompt.h inputhdlr.h circularbuffer.h
 
-#Question 1 make-code
-all: hw3.1 hw3.2a hw3.2b
+#Homework 1
+all: hw1
 
-hw3.1: main.o 1dalloc.o max.o
+hw1: main.o prompt.o inputhdlr.o circularbuffer.o
 	$(C) -o $@ $(HW3OBJS)
-
-1dalloc.o: 1dalloc.c verbose.h
-	$(C) -c 1dalloc.c
 	
-max.o: max.c verbose.h
-	$(C) -c max.c
-	
-main.o: main.c hw3.h verbose.h
+main.o: main.c hw1.h 
 	$(C) -c main.c
 	
+prompt.o: prompt.c prompt.h
+	$(C) -c prompt.c
+	
+inputhdlr.o: inputhdlr.c inputhdlr.h
+	$(C) -c inputhdlr.c 
+	
+circularbuffer.o: circularbuffer.c circularbuffer.h
+	$(C) -c circularbuffer.c 	
+	
 clean: 
-	rm $(HW1OBJS)
+	rm $(obs)
 
 
