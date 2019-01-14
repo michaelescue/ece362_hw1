@@ -5,9 +5,11 @@ DUe: 01/17/19
 
 */
 
-/** Headers */
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "circularbuffer.h"
-#include "stringtoint.h"
+
+#ifdef STRINGTOINT_H
+#define STRINGTOINT_H
+
+int stringtoint(char *string)
+
+#endif

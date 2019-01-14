@@ -15,16 +15,16 @@ static int i = 0;
 struct _circbuf *circularbuffer(int op, int linenum, char string[MAX_STRING]){
 	
 	switch(op){		// Operations Switch
-		case INIT:
+		case INIT:		//To initialize the buffer.
 		{
 			*circbuf = malloc(sizeof(circbuf));
 			if(circbuf == NULL)	printf("Circular Buffer Allocation Failed!\n");
 			return circbuf[i];				
 			break;
 		}
-		case STORE:
+		case STORE:		// Storing data in the buffer.
 		{
-			circbuf[i]->linenum = linenum;
+			circbuf[i]->stored_line_num = linenum;
 			if(strcmp(string, strcpy(circbuf[i]->string, string)) == 0){;
 				i = ((i+1) % CIRBUSIZ);
 				return circbuf[i];
@@ -35,10 +35,10 @@ struct _circbuf *circularbuffer(int op, int linenum, char string[MAX_STRING]){
 			}
 			break;
 		}
-		case READ:
+		case READ:		//Reading data from the buffer.
 		{
 			for(int k = 0; k < CIRBUSIZ; k++){
-				if((strncmp(circbuf[i]->string, string, strlen(string))) == 0)
+				if(circbuf[i]->stored_line_num == linenum) //Compare the input string to the stored linenum of each index
 					return circbuf[i];
 			}
 			return NULL;

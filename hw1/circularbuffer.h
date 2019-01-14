@@ -18,10 +18,14 @@ DUe: 01/17/19
 #define READ 2		//< READ Searches for the passed argument and returns. 
 
 /** Data structs */
+#ifndef CIRCBUF_H
+#define CIRCBUF_H
 struct _circbuf
 {
-	int linenum;
+	int stored_line_num;
 	char string[MAX_STRING];
 }*circbuf[CIRBUSIZ];
+#endif
 
 /** Function Prototypes */
+struct _circbuf *circularbuffer(int op, int linenum, char string[MAX_STRING]);

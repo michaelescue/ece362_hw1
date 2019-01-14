@@ -19,6 +19,7 @@ DUe: 01/17/19
 int main(){
 	while(1){ // ad infinitum 
 	
+	circularbuffer(INIT);
 
 		
 
