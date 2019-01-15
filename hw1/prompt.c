@@ -12,12 +12,15 @@ prompt handles the display and input from users.
 */
 
 /** Headers  */
-#include "hw1.h"
+#include <stdio.h>
+#include "prompt.h"
+#include "inputhdlr.h"
+
 
 /** Macros */
+static int current_linum = 1;
 
-
-int prompt(){
-	
-	
+int prompt(void){
+	printf("%d> ");
+	inputhdlr(current_linum);
 }

@@ -25,7 +25,8 @@ struct _circbuf
 	int stored_line_num;
 	char string[MAX_STRING];
 }*circbuf[CIRBUSIZ];
-#endif
 
 /** Function Prototypes */
 struct _circbuf *circularbuffer(int op, int linenum, char string[MAX_STRING]);
+
+#endif

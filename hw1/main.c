@@ -6,9 +6,13 @@ DUe: 01/17/19
 */
 
 /** Headers */
-
-#include "hw1.h"
-
+#include <stdio.h>
+	#include <stdlib.h>
+	#include <math.h>
+	#include "inputhdlr.h"
+	#include "circularbuffer.h"
+	#include "prompt.h"
+	
 /** Functions
 
 	-Prompt which has the current historical input line # in the prompt. 
@@ -19,9 +23,8 @@ DUe: 01/17/19
 int main(){
 	while(1){ // ad infinitum 
 	
-	circularbuffer(INIT);
-
-		
-
+	circularbuffer(INIT,0," ");
+	
 	}
+	return 0;
 }
