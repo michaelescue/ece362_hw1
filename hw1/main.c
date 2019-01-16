@@ -22,16 +22,10 @@ DUe: 01/17/19
 
 int main(){
 	
-	// Initialize Circular Buffer
-	circularbuffer(INIT,0," ");
-
-	while(1){ // ad infinitum 
+	while(1)		// Ad infinitum 
+	{ 
 	
-	#ifdef VERBOSE
-	printf("Start!\n");
-	#endif
-	
-	
+	if(prompt() == 1) break;	
 	
 	}
 	return 0;

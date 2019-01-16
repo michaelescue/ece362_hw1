@@ -14,7 +14,8 @@ DUe: 01/17/19
 #define MAX_STRING 256
 #define CIRBUSIZ 5		//< Circular buffer size
 #define STORE 1		//< STORE Stores the passed argument.
-#define READ 2		//< READ Searches for the passed argument and returns. 
+#define READ 0		//< READ Searches for the passed argument and returns. 
+#define HISTORY 2		//< HISTORY returns all values.
 
 /** Function Prototypes */
-char *circularbuffer(bool op, int linenum, char *string[MAX_STRING]);
+char *circularbuffer(int op, int linenum, char *string[MAX_STRING]);

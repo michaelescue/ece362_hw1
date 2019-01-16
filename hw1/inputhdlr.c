@@ -12,15 +12,16 @@ DUe: 01/17/19
 #include "inputhdlr.h"
 #include "circularbuffer.h"
 
+/** inputhdlr */
+int inputhdlr(int current_linenum, char *p_input)
+{
 
-int inputhdlr(int current_linenum, char *p_input){
-
-	if(strcmp (p_input, "history")
+	if(strcmp (p_input, "history"))
 	{
-		circularbuffer(HISTORY, current_linenum, p_input);		// Execute history display in buffer.
-		circularbuffer(STORE, current_linenum, p_input);		// STORE the instruction in the buffer.
+		circularbuffer(HISTORY, current_linenum, &p_input);		// Execute history display in buffer.
+		circularbuffer(STORE, current_linenum, &p_input);		// STORE the instruction in the buffer.
 		return 0;		// Return success.
-	{
+	}
 	else if(strncmp(p_input, "!", 1) == 0)		// Checks if entered string is !x command.
 	{
 		p_input = p_input + 1;		// Advance the pointer in the string to the [1] index, where [0] is !.
@@ -34,13 +35,17 @@ int inputhdlr(int current_linenum, char *p_input){
 			return 1;		// Return "unsuccessfull".
 		}
 		char *p_output = NULL;
-		if((p_output = circularbuffer(READ, linenum, " ")) != NULL)		// Pass operation to READ, with linenum to search for, along with arbitrary string input.
+		if((p_output = circularbuffer(READ, linenum, NULL)) != NULL)		// Pass operation to READ, with linenum to search for, along with arbitrary string input.
 		{
 			inputhdlr(linenum, p_output);
-			circularbuffer(STORE, current_linenum, p_input);		//Store instruction.
+			circularbuffer(STORE, current_linenum, &p_input);		//Store instruction.
 			return 0;
 		}
 	}
-
+	else if(strcmp(p_input, "exit"))
+	{
+		return EXIT;
+	}
+	
 }
 	
