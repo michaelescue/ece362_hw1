@@ -6,48 +6,39 @@ DUe: 01/17/19
 */
 
 /** Headers */
+
 #include "circularbuffer.h"
 
 /** Static Variables */
-static int i = 0;
+
+static char i = 0;		//The index for the buffer.
+static char buffer[CIRBUSIZ][MAX_STRING] = {{0},{0}};	//Initialized buffer.
 
 /**circularbuffer function */
-struct _circbuf *circularbuffer(int op, int linenum, char string[MAX_STRING]){
+
+char *circularbuffer(bool op, int linenum, char *string[MAX_STRING]){
 	
-	switch(op){		// Operations Switch
-		case INIT:		//To initialize the buffer.
-		{
-			*circbuf = malloc(sizeof(circbuf));
-			if(circbuf == NULL)	printf("Circular Buffer Allocation Failed!\n");
-			return circbuf[i];				
-			break;
-		}
-		case STORE:		// Storing data in the buffer.
-		{
-			circbuf[i]->stored_line_num = linenum;
-			if(strcmp(string, strcpy(circbuf[i]->string, string)) == 0){;
-				i = ((i+1) % CIRBUSIZ);
-				return circbuf[i];
-			}
-			else {
-				printf("Circular Buffer Store Failed!\n");
-				return NULL;
-			}
-			break;
-		}
-		case READ:		//Reading data from the buffer.
-		{
-			for(int k = 0; k < CIRBUSIZ; k++){
-				if(circbuf[i]->stored_line_num == linenum) //Compare the input string to the stored linenum of each index
-					return circbuf[i];
-			}
-			return NULL;
-			break;
-		}
-		default: 
-			return NULL;
+	if(op == STORE)		// Store line number and string.
+	{
+		buffer[i][0] = linenum;		// First char is the linenum of the stored string
+		buffer[i][1] = '\0';		// Terminate the string.
+		char *p = buffer[i][0];		// Point to the start of the string.
+		strcat(string, p);			// Concatenate with the input string.
+		i = ((i + 1) % CIRCUSIZ);	// Increments after store, with a limit to the integer buffer size. 
 	}
-	
-	//Increment current line.
+	else if(op == READ)		// Read line number, if stored.
+	{
+		for(int k; k < CIRBUSIZ; k++)
+		{
+			if(buffer[k][0] == linenum)
+			{
+				char *q = buffer[k][1];
+				return q;
+			}
+			else return NULL;
+		}
+		
+		
+	}
 	
 }
