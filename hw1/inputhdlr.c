@@ -13,39 +13,46 @@ DUe: 01/17/19
 #include "circularbuffer.h"
 
 /** inputhdlr */
-int inputhdlr(int current_linenum, char *p_input)
+int inputhdlr(char *current_linenum, char *p_input)
 {
 
-	if(strcmp (p_input, "history"))
+	
+	if(strcmp(p_input, "exit") == 0)
 	{
-		circularbuffer(HISTORY, current_linenum, &p_input);		// Execute history display in buffer.
-		circularbuffer(STORE, current_linenum, &p_input);		// STORE the instruction in the buffer.
-		return 0;		// Return success.
+		return EXIT;
 	}
+/*	else if(strncmp(p_input, "parse ", 6) == 0)
+	{
+		...
+	}
+*/
 	else if(strncmp(p_input, "!", 1) == 0)		// Checks if entered string is !x command.
 	{
 		p_input = p_input + 1;		// Advance the pointer in the string to the [1] index, where [0] is !.
-		int linenum = 0;		// Temp value for passing the READ value. 
+		char linenum = 0;		// Temp value for passing the READ value.
 		linenum = atoi(p_input);		// String input to integer value conversion.
-		linenum = abs(linenum);		// Absolute value.
-		p_input = p_input - 1;		// Reset pointer to beginning.
+		linenum = (char) abs(linenum);		// Absolute value. Fun fact, returns an int. Not a char.
+		p_input = p_input - 1;		// Reset pointer to beginning, is used later inline. 
 		if(linenum == 0)		//Checks for error. There should never be a line "0". Also, abs() retuns 0 on failures.
 		{
 			printf("\'%s\' is not a valid command. Format is: ![integer]\n", p_input); //Error message
 			return 1;		// Return "unsuccessfull".
 		}
 		char *p_output = NULL;
-		if((p_output = circularbuffer(READ, linenum, NULL)) != NULL)		// Pass operation to READ, with linenum to search for, along with arbitrary string input.
-		{
-			inputhdlr(linenum, p_output);
-			circularbuffer(STORE, current_linenum, &p_input);		//Store instruction.
-			return 0;
-		}
+		p_output = circularbuffer(READ, linenum, NULL);		// Pass operation to READ, with linenum to search for, along with arbitrary string input.
+		printf("= %s\n", p_output);
+		inputhdlr(current_linenum, p_output);
 	}
-	else if(strcmp(p_input, "exit"))
+	else if(strcmp(p_input, "history") == 0)
 	{
-		return EXIT;
+		circularbuffer(HISTORY, *current_linenum, p_input);		// Execute history display in buffer.
 	}
-	
+	else if(strcmp(p_input, NULL) == 0)
+	{
+	circularbuffer(STORE, *current_linenum, p_input);		// STORE the instruction in the buffer.
+	*current_linenum = *current_linenum + 1;
+	 return 0;
+	}
+	return INVALID;
 }
 	

@@ -19,26 +19,43 @@ prompt handles the display and input from users.
 
 
 /** Macros */
-static int current_linenum = 1;
+static char current_linenum = 1;
 
 /** prompt */
 int prompt(void){
 	printf("%d> ", current_linenum);
 	
 	int status = 0;
-	char input[MAX_STRING];
-	char *p_input = input;
+	char input[MAX_STRING] = {0};
+	char *p_input = &input[0];
+	char *p_current_linenum = &current_linenum;
 
-	scanf("%s", p_input);		// Receives input string.
+	
+	scanf("%s", input);		// Receives input string.
 	getchar();		// Grabs hanging input.
 	
-	status = inputhdlr(current_linenum, p_input);
+	status = inputhdlr(p_current_linenum, input);
 	
-	if(status == 1){
-		printf("Exiting Program.\n");
-		return 1;
-	}
-	else if(status != 0){
-		printf("Enter a valid command: ");
+	switch(status)
+	{
+		case(EXIT):
+		{
+			printf("Exiting Program.\n");
+			return 1;
+		}
+		case(INVALID):
+		{
+			printf("Enter a valid command: ");
+			return 0;
+		}
+		case(NO_RESULT):
+		{
+			printf("No match found in buffer.\n");
+			return 0;
+		}
+		default:
+		{
+			return 0;
+		}
 	}
 }

@@ -1,6 +1,3 @@
-break prompt.c:prompt
-break inputhdlr.c:inputhdlr
-break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/inputhdlr.c:21
 break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/inputhdlr.c:24
 break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/inputhdlr.c:28
 break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/inputhdlr.c:33
@@ -10,5 +7,4 @@ break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1
 break circularbuffer.c:circularbuffer
 break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/circularbuffer.c:27
 break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/circularbuffer.c:36
-break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/circularbuffer.c:50
 break /mnt/c/Users/Michael/OneDrive/Documents/ECE362-Embedded OS/Assignments/hw1/circularbuffer.c:60

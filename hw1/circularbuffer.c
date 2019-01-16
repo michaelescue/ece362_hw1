@@ -13,16 +13,15 @@ static char i = 0;		//The index for the buffer.
 static char buffer[CIRBUSIZ][MAX_STRING] = {{0},{0}};	//Initialized buffer.
 
 /**circularbuffer */
-char *circularbuffer(int op, int linenum, char *string[MAX_STRING]){
+char *circularbuffer(int op, char linenum, char *string){
 	
 	switch(op)
 	{
 		case (STORE):		// Store line number and string.
 		{
 			buffer[i][0] = linenum;		// First char is the linenum of the stored string
-			buffer[i][1] = '\0';		// Terminate the string.
-			char *p = &buffer[i][0];		// Point to the start of the string.
-			strcat((char*) string, (char*) p);			// Concatenate with the input string.
+			char *p_buffer = &buffer[i][1];
+			strcpy(p_buffer, string);
 			i = ((i + 1) % CIRBUSIZ);	// Increments after store, with a limit to the integer buffer size.
 			return NULL;
 		}
@@ -43,13 +42,13 @@ char *circularbuffer(int op, int linenum, char *string[MAX_STRING]){
 		case (HISTORY):		// Display contents.
 		{
 			printf("Line\tComand\n");
-			printf("______________");
+			printf("______________\n");
 			
 			for(int j = 0; j < CIRBUSIZ; j++)
 			{
-				char *p_buff = &buffer[j][1];
+				char *p_buff = &buffer[j][0];
 				
-				printf("%c\t%s\n", buffer[j][0], p_buff);
+				if(buffer[j][0] != 0) printf("%c\t%s\n", p_buff, (p_buff+1));
 			}
 			return NULL;
 		}
