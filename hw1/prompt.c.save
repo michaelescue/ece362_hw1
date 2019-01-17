@@ -19,7 +19,7 @@ prompt handles the display and input from users.
 
 
 /** Macros */
-static int current_linenum = 1;
+static char current_linenum = 1;
 
 /** prompt */
 int prompt(void){
@@ -28,11 +28,12 @@ int prompt(void){
 	int status = 0;
 	char input[MAX_STRING] = {0};
 	char *p_input = &input[0];
-	int *p_current_linenum = &current_linenum;
+	char *p_current_linenum = &current_linenum;
 
 
-	fgets(p_input, MAX_STRING, stdin);		// Receives input string. Instead of scanf, I'm borrowing this implementation here "https://stackoverflow.com/questions/19794268/scanf-reading-enter-key"
-    *(p_input + sizeof(p_input)-1) = 0;
+	scanf("%s", p_input);		// Receives input string. Instead of scanf, I'm borrowing this implementation. 
+	getchar();		// Grabs hanging input.
+
 	status = inputhdlr(p_current_linenum, p_input);
 
 	switch(status)
@@ -44,7 +45,7 @@ int prompt(void){
 		}
 		case(INVALID):
 		{
-			printf("Enter a valid command:\n");
+			printf("Enter a valid command: ");
 			return 0;
 		}
 		case(NO_RESULT):

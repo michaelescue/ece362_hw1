@@ -12,6 +12,6 @@ DUe: 01/17/19
 #ifndef INPUTHDLR_H
 #define INPUTHDLR_H
 
-int inputhdlr(char *current_linenum, char *p_input);
+int inputhdlr(int *current_linenum, char *p_input);
 
 #endif

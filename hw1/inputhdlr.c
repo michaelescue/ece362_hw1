@@ -13,7 +13,7 @@ DUe: 01/17/19
 #include "circularbuffer.h"
 
 /** inputhdlr */
-int inputhdlr(char *current_linenum, char *p_input)
+int inputhdlr(int *current_linenum, char *p_input)
 {
 
 	if(strcmp(p_input, "exit") == 0)
@@ -33,11 +33,11 @@ int inputhdlr(char *current_linenum, char *p_input)
 
 			p_input = p_input + 1;
 			// Advance the pointer in the string to the [1] index, where [0] is !.
-			char linenum = 0;
+			int linenum = 0;
 			// Temp value for passing the READ value.
 			linenum = atoi(p_input);
 			// String input to integer value conversion.
-			linenum = (char) abs(linenum);
+			linenum = (int) abs(linenum);
 			// Absolute value. Fun fact, returns an int. Not a char.
 			p_input = p_input - 1;
 			// Reset pointer to beginning, is used later inline.
