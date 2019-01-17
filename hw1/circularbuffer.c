@@ -41,7 +41,8 @@ char *circularbuffer(int op, int linenum, char *string){
 			{
 				if(buffer[k][0] == linenum)
 				{
-					char *q = &buffer[k][1];
+					char *q = &buffer[k][0];
+					q = q + sizeof(linenum) + 1;
 					return q;
 				}
 

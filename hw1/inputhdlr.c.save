@@ -58,7 +58,7 @@ int inputhdlr(int *current_linenum, char *p_input)
             }
 			else
             {
-                printf("%s -> %s\n", p_input, p_output);
+                printf("%s -> %s\n", p_output);
                 inputhdlr(current_linenum, p_output);
             }
 		}
