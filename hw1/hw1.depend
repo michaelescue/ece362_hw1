@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1547707456 source:c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\inputhdlr.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"inputhdlr.h"
+	"circularbuffer.h"
+
+1547661490 c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\inputhdlr.h
+
+1547661494 c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\circularbuffer.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1547646054 source:c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"inputhdlr.h"
+	"circularbuffer.h"
+	"prompt.h"
+
+1547583018 c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\prompt.h
+
+1547707288 source:c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\prompt.c
+	<stdio.h>
+	"prompt.h"
+	"inputhdlr.h"
+	"circularbuffer.h"
+
+1547707587 source:c:\users\michael\onedrive\documents\ece362-embedded os\assignments\hw1\circularbuffer.c
+	"circularbuffer.h"
+

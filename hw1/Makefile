@@ -9,7 +9,7 @@ hdrs = prompt.h inputhdlr.h circularbuffer.h
 
 #Homework 1
 all: hw1
-debug: debug
+again: clean hw1
 
 hw1: main.o prompt.o inputhdlr.o circularbuffer.o
 	$(C) $(obs) -g -o $@.exe

@@ -24,18 +24,18 @@ static char current_linenum = 1;
 /** prompt */
 int prompt(void){
 	printf("%d> ", current_linenum);
-	
+
 	int status = 0;
 	char input[MAX_STRING] = {0};
 	char *p_input = &input[0];
 	char *p_current_linenum = &current_linenum;
 
-	
-	scanf("%s", input);		// Receives input string.
+
+	scanf("%s", p_input);		// Receives input string.
 	getchar();		// Grabs hanging input.
-	
-	status = inputhdlr(p_current_linenum, input);
-	
+
+	status = inputhdlr(p_current_linenum, p_input);
+
 	switch(status)
 	{
 		case(EXIT):
