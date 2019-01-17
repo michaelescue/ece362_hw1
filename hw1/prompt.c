@@ -32,7 +32,7 @@ int prompt(void){
 
 
 	fgets(p_input, MAX_STRING, stdin);		// Receives input string. Instead of scanf, I'm borrowing this implementation here "https://stackoverflow.com/questions/19794268/scanf-reading-enter-key"
-    *(p_input + sizeof(p_input)-1) = 0;
+    *(p_input + strlen(p_input)-1) = 0;
 	status = inputhdlr(p_current_linenum, p_input);
 
 	switch(status)
