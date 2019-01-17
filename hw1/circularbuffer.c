@@ -22,13 +22,13 @@ char *circularbuffer(int op, int linenum, char *string){
 		{
 			char *p_buffer = &buffer[i][0];
 			// First char is the linenum of the stored string
-			memset(p_buffer, 0, MAX_STRING);
+			memset(p_buffer, 0, (MAX_STRING-1));
 			*p_buffer = linenum;
 			p_buffer = p_buffer + sizeof(linenum);
 			*p_buffer = ' ';
 			p_buffer = p_buffer + 1;
-			strncpy(p_buffer, string, (MAX_STRING-sizeof(linenum+1)));
-			p_buffer = p_buffer - sizeof(linenum) - 2;
+			strncpy(p_buffer, string, (MAX_STRING-sizeof(linenum)-1));
+			p_buffer = p_buffer - sizeof(linenum) - 1;
 			i = ((i + 1) % CIRBUSIZ);
 			// Increments after store, with a limit to the integer buffer size.
 			return NULL;
@@ -37,7 +37,7 @@ char *circularbuffer(int op, int linenum, char *string){
 		case (READ):
 		// Read line number, if stored.
 		{
-			for(int k; k < CIRBUSIZ; k++)
+			for(int k = 0; k < CIRBUSIZ; k++)
 			{
 				if(buffer[k][0] == linenum)
 				{
@@ -59,7 +59,7 @@ char *circularbuffer(int op, int linenum, char *string){
 			for(int j = 0; j < CIRBUSIZ; j++)
 			{
 				char *p_buff = &buffer[j][0];
-				if(*p_buff != '\0') printf("%i\t %s\n", *p_buff, (p_buff+sizeof(int)+1));
+				if(*p_buff != '\0') printf("%i\t%s\n", *p_buff, (p_buff+sizeof(int)+1));
 			}
 			printf("_______________\n\n");
 			return NULL;
